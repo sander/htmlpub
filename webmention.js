@@ -46,7 +46,7 @@ function showInfo(state, req, res) {
 function showAll(state, req, res) {
   state.db.all(sql.selectAll, function(err, rows) {
     if (err) console.log('error', err);
-    res.end(JSON.stringify(rows, null, 2));
+    else res.end(JSON.stringify(rows, null, 2));
   });
 }
 
