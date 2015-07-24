@@ -1,0 +1,27 @@
+{
+  "name": "htmlpub",
+  "version": "0.0.1",
+  "description": "Publish stuff using HTML",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sander/htmlpub.git"
+  },
+  "author": "Sander Dijkhuis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sander/htmlpub/issues"
+  },
+  "homepage": "https://github.com/sander/htmlpub#readme",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "htmlparser2": "^3.8.3",
+    "request": "^2.60.0",
+    "serve-index": "^1.7.1",
+    "sqlite3": "^3.0.9"
+  }
+}
