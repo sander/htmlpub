@@ -3,6 +3,13 @@
 [IndieWeb][iw] ideas implemented in a simple Node.js-based web site.
 Work in progress.
 
+## How to run
+
+- Download code and install [Node.js][no].
+- `npm install` to download and compile dependencies.
+- `node server.js` to run the server.
+- Browse to [localhost:8000](http://localhost:8000/).
+
 ## Works
 
 - Serves static pages from `static/` at `http://localhost:8000`.
@@ -18,3 +25,4 @@ Work in progress.
 
 [iw]: http://indiewebcamp.com
 [wm]: http://webmention.org/
+[no]: https://nodejs.org
