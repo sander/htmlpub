@@ -11,7 +11,7 @@
       [params :refer [wrap-params]])
     [ring.util.request :refer [request-url]]
     [yesql.core :refer [defqueries]])
-  (:import [java.net URL]))
+  (:import [java.net URL MalformedURLException]))
 
 (def db-spec
   {:classname "org.sqlite.JDBC"
@@ -30,19 +30,31 @@
 (defn- absolute-url [path req]
   (str (URL. (URL. (request-url req)) path)))
 
+(defn- url? [s]
+  (try (URL. s) (catch MalformedURLException _)))
+
+(defn- remove-nil [m]
+  (into {} (remove (comp nil? second) m)))
+
+(defn- last-insert-rowid [res]
+  (get res (keyword "last_insert_rowid()")))
+
 (defn- get-webmentions []
-  (json (select-webmentions db-spec)))
+  (json (map remove-nil (select-webmentions db-spec))))
 
 (defn- get-webmention [id]
   (let [[wm] (select-webmention db-spec id)]
-    (json (or wm "Not found") (if wm 200 404))))
+    (json (if wm (remove-nil wm) "Not found") (if wm 200 404))))
 
 (defn- handle-incoming [source target req]
-  (let [id (-> (insert-webmention<! db-spec source target)
-               (get (keyword "last_insert_rowid()")))]
-    {:status  202
+  (let [[status resp]
+        (cond
+          (not (url? source)) [400 "Source is not a valid URL."]
+          (not (url? target)) [400 "Target is not a valid URL."]
+          :else [202 (-> (insert-webmention<! db-spec source target) (last-insert-rowid) (str) (absolute-url req))])]
+    {:status  status
      :headers {"Content-Type" "text/plain"}
-     :body    (absolute-url (str id) req)}))
+     :body    (str resp "\n")}))
 
 (defroutes app-routes
   (GET "/webmention/" [] (get-webmentions))
