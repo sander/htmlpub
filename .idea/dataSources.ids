@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component name="dataSourceStorage">
+  <data-source name="SQLite - htmlpub" uuid="26f663bf-a4b7-4e5d-90fe-c4ebf76cb680">
+    <database-info product="SQLite" version="3.8.9" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
+    <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
+    <schema name="" catalog=""/>
+    <table name="webmention" schema="" catalog="" type="TABLE">
+      <column name="source" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="target" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+      <column name="t" sqlType="TIMESTAMP" precision="2000000000" scale="10" nullable="true" jdbcType="12" def="J2N1cnJlbnRfdGltZXN0YW1wJw=="/>
+      <column name="status" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12" def="JzIwMic="/>
+      <column name="message" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
+    </table>
+  </data-source>
+</component>
