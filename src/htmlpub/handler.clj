@@ -13,10 +13,12 @@
     [yesql.core :refer [defqueries]])
   (:import [java.net URL MalformedURLException]))
 
+(def dirname "/Users/sander/Code/2015")
+
 (def db-spec
-  {:classname "org.sqlite.JDBC"
+  {:classname   "org.sqlite.JDBC"
    :subprotocol "sqlite"
-   :subname "data/htmlpub.db"})
+   :subname     (or (System/getenv "HTMLPUB_DB") "data/htmlpub.db")})
 
 (defqueries "queries.sql")
 
