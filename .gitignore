@@ -12,4 +12,5 @@ pom.xml.asc
 /.idea/workspace.xml
 /.idea/tasks.xml
 /.idea/replstate.xml
+/.idea/libraries
 /data
