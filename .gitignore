@@ -13,4 +13,5 @@ pom.xml.asc
 /.idea/tasks.xml
 /.idea/replstate.xml
 /.idea/libraries
+/.idea/*.local.xml
 /data
