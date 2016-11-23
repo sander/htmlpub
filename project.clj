@@ -1,7 +1,7 @@
 (defproject
 
   htmlpub
-  "0.1.0-SNAPSHOT"
+  "0.2.0"
 
   :description
   "Static website stuff"
